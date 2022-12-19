@@ -61,7 +61,7 @@ $sql = 'SELECT ID, Name, Email , Gender , mail_status FROM users_details';
         <td>".$row['Gender']."</td>
         <td>".$row['mail_status']."</td>
         <td>
-         <a href=print.php?id=<?php echo $row['id'] ?>'> <i class='fa-solid fa-eye fa-fw' id='eye'></i></a>
+         <a href='print.php?id=<?php echo $row["ID"] ?'> <i class='fa-solid fa-eye fa-fw' id='eye'></i></a>
          <a href='update.php?' ><i class='fa-solid fa-pen fa-fw'></i><a>
          <a href='UserDetails.php?id= ".$row['ID']."'><i class='fa-solid fa-trash fa-fw'></i></a>
         </td>
