@@ -1,20 +1,17 @@
 <?php 
-
+ 
     $dbhost = 'localhost';
     $dbuser = 'root';
     $dbpass = '';
     $dbname = 'php';
-    $conn = mysqli_connect( $dbhost, $dbuser, $dbpass, $dbname);
-    mysqli_select_db($conn,$dbname);
-   
-        if(isset($_GET['class'])){
-            $id=$_GET['class'];
+     $conn = mysqli_connect( $dbhost, $dbuser, $dbpass, $dbname);
+       mysqli_select_db($conn,$dbname);
+    
+        if(isset($_GET["id"])){
+            $id=$_GET["id"];
             $sql="SELECT * FROM `users_details` WHERE `users_details`.`ID` = '$id'";
-            $result=mysqli_query($conn,$sql);
+           $result=mysqli_query($conn,$sql);
             $row=mysqli_fetch_assoc($result);
-            while($row = mysqli_fetch_assoc($result)) {
-                echo $row['Name'] ;
-            }
         }
    
    
@@ -29,7 +26,7 @@
     <title>Print</title>
 </head>
 <body>
-<form action="<?php $_PHP_SELF ?>" method="post">
+<form action="print.php" method="POST">
 <div><label>Name</label>
 <br>
 <input type="text" name="name" value="<?php echo $row['Name']; ?>">
@@ -40,14 +37,14 @@
 </div><br>
 <div><label>Gender</label>
 <br>
-<input type="radio" name="gender" value="F" <?php echo ($row['Gender'] =="F" )?"checked":"";?>>Female
+<input type="radio" name="gender" value="female" <?php echo ($row['Gender'] =="female" )?"checked":"";?>>Female
 <br>
-<input type="radio" name="gender" value="M" <?php echo ($row['Gender'] =="M" )?"checked":""; ?>>Male
+<input type="radio" name="gender" value="male" <?php echo ($row['Gender']=="male")?"checked":""; ?>>Male
 
 </div><br>
 <div>
     <?php 
-        if (!empty($row['Mail_status']=="Yes" )){
+        if (!empty($row['mail_status']=="yes" )){
             echo "you will receive email from us";
         }
         else{
@@ -57,7 +54,6 @@
 
 </div>
 <br>
-<div><button><a href="index.php" >Back</button></div>
 <input type="button" value="Go back!" onclick="history.back()" style="background:blueviolet;">
 </form>
     

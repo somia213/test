@@ -43,7 +43,7 @@ $conn = mysqli_connect( $dbhost, $dbuser, $dbpass, $dbname);
       header("location:UserDetails.php");
       die();
     }
- //include "print.php";
+
 $sql = 'SELECT ID, Name, Email , Gender , mail_status FROM users_details';
    mysqli_select_db($conn,$dbname);
    $result = mysqli_query($conn,$sql );
@@ -54,18 +54,18 @@ $sql = 'SELECT ID, Name, Email , Gender , mail_status FROM users_details';
     <table class='table mt-3 table-bordered table-striped' border='1'>";
     echo "<th>ID</th>" , "<th>Name</th>" , "<th>Email</th>" , "<th>Gender</th>" , "<th>Mail status</th>" , "<th>Action</th>" ;
       while($row = mysqli_fetch_assoc($result)) {
-        echo "/<tr>
+        echo "<tr>
         <td>".$row['ID']."</td>
         <td>".$row['Name']."</td>
         <td>".$row['Email']."</td>
         <td>".$row['Gender']."</td>
         <td>".$row['mail_status']."</td>
         <td>
-         <a href='print.php?id=<?php echo $row["ID"] ?'> <i class='fa-solid fa-eye fa-fw' id='eye'></i></a>
-         <a href='update.php?' ><i class='fa-solid fa-pen fa-fw'></i><a>
+         <a href='print.php?id=".$row["ID"]."'><i class='fa-solid fa-eye fa-fw' id='eye'></i></a>
+         <a href='update.php?id=".$row["ID"]."'><i class='fa-solid fa-pen fa-fw'></i><a>
          <a href='UserDetails.php?id= ".$row['ID']."'><i class='fa-solid fa-trash fa-fw'></i></a>
         </td>
-      </tr>/";
+      </tr>";
       }
       echo "</table>
       </div>";
