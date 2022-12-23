@@ -27,20 +27,16 @@
 </head>
 <body>
 <form action="print.php" method="POST">
-<div><label>Name</label>
+<div><label>Name : </label>
 <br>
-<input type="text" name="name" value="<?php echo $row['Name']; ?>">
+<label>- <?php echo $row['Name']; ?></label>
 </div><br>
-<div><label>Email</label>
+<div><label>Email : </label>
 <br>
-<input type="email" name="email" value="<?php echo $row['Email']; ?>">
-</div><br>
-<div><label>Gender</label>
+<label>- <?php echo $row['Email']; ?></label></div><br>
+<div><label>Gender : </label>
 <br>
-<input type="radio" name="gender" value="female" <?php echo ($row['Gender'] =="female" )?"checked":"";?>>Female
-<br>
-<input type="radio" name="gender" value="male" <?php echo ($row['Gender']=="male")?"checked":""; ?>>Male
-
+<label>- <?php if($row['Gender'] =="female" ){echo"Female";}else{echo"Male";}?></label><br>
 </div><br>
 <div>
     <?php 
